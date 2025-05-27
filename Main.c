@@ -44,6 +44,52 @@ void decrypt(circularQueue *q,char *text,int key){
 }
 
 
-int main(){
+
+int main() {
+    circularQueue alphabet;
+    char text[100];
+    int key;
+    char option;
+
+    createqueue(&alphabet);
+
+    printf("Encryption (E) or Decryption (D)?:");
+    scanf("%c",&option);
+
+    if(option=='E'||option=='e'){
+    while ((getchar()) != '\n');
+
+    printf("Enter message: ");
+    fgets(text, sizeof(text), stdin);
+    text[strcspn(text, "\n")] = '\0';
+
+    printf("Enter key: ");
+    scanf("%d", &key);
+    printf("*********************\n");
+
+    encrypt(&alphabet, text, key);
+    printf("Encrypted Message: %s\n", text);
+
+
+} else if(option=='D'||option=='d'){
+    while ((getchar()) != '\n');
+
+    printf("Enter message: ");
+    fgets(text, sizeof(text), stdin);
+    text[strcspn(text, "\n")] = '\0';
+
+    printf("Enter key: ");
+    scanf("%d", &key);
+    printf("*********************\n");
+
+    decrypt(&alphabet, text, key);
+    printf("Decrypted Message: %s\n", text);
+
+}   
+
+    else{
+        printf("wrong choice");
+    }
+
     return 0;
 }
